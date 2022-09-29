@@ -33,6 +33,7 @@ public class Stop implements Behavior {
 		// Close color sensor
 		this.cs.close();
 		this.a.stop();
+		System.exit(0);
 	}
 
 	@Override
@@ -41,7 +42,7 @@ public class Stop implements Behavior {
 		System.exit(0);
 	}
 
-	public void setArby(Arbitrator a) {
+	public void setArbi(Arbitrator a) {
 		this.a = a;
 	}
 	
