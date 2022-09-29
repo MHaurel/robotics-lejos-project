@@ -36,7 +36,8 @@ public class Main {
 		/*
 		 * Instantating behaviors
 		 */
-		Behavior b1 = new ForwardCheckColor(pilot, cs);
+		//Behavior b1 = new ForwardCheckColor(pilot, cs);
+		Behavior b1 = new GetColor(cs);
 		
 		Stop bStop = new Stop(pilot, cs);
 		
@@ -45,9 +46,9 @@ public class Main {
 		Arbitrator arby = new Arbitrator(tab);
 		
 		// Printing message when ready
-		LCD.drawString("I'm ready !", 0, 1);
+		System.out.println("I'm ready !");
 		Button.LEFT.waitForPressAndRelease();
-		LCD.clear();
+
 		
 		arby.go();
 		
