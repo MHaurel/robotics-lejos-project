@@ -13,6 +13,15 @@ import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 
 public class Main {
+	
+	enum Color {
+		RED,
+		GREEN,
+		BLUE,
+		ORANGE,
+		WHITE,
+		BLACK
+	}
 
 	public static void main(String[] args) {
 		
@@ -43,14 +52,24 @@ public class Main {
 		
 		Behavior[] tab = new Behavior[] {b1, bStop};
 		
-		Arbitrator arby = new Arbitrator(tab);
+		Arbitrator arbi = new Arbitrator(tab);
+		
+		bStop.setArbi(arbi);
 		
 		// Printing message when ready
-		System.out.println("I'm ready !");
-		Button.LEFT.waitForPressAndRelease();
+		System.out.println("I'm ready ! Let's go DOWN");
+		Button.DOWN.waitForPressAndRelease();
+		System.out.println("Checkpoint press RIGHT");
 
+		arbi.go();
 		
-		arby.go();
+		int[][] map = {
+				{1, 2, 3, 4, 5, 6, 7},
+				{1, 2, 3, 4, 5, 6, 7},
+				{1, 2, 3, 4, 5, 6, 7},
+				{1, 2, 3, 4, 5, 6, 7},
+				{1, 2, 3, 4, 5, 6, 7}
+		};
 		
 	}
 	
