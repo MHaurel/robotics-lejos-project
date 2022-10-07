@@ -54,6 +54,7 @@ public class GetColor implements Behavior {
 			for (int j = 0; j < 3;j++) {
 				System.out.print(this.colorCalibrated[i][j] + " ");
 			}
+			int i = this.colorCalibrated.length;
 			System.out.println();
 		}
 		
@@ -96,6 +97,20 @@ public class GetColor implements Behavior {
 		colors[1] = (int)(sample[1] * 255);
 		colors[2] = (int)(sample[2] * 255);
 		return colors;
+	}
+	
+	private int closestColor(int[][] colorCalibrated, int[] colorActual) {
+		double distEucl;
+		double distMin = 999;
+		int colorId = 0;
+		for (int i = 0; i < colorCalibrated.length; i++) {
+			distEucl = Math.sqrt(Math.pow((colorCalibrated[i][0] - colorActual[0]), 2) + Math.pow((colorCalibrated[i][1] - colorActual[1]), 2) + Math.pow((colorCalibrated[i][2] - colorActual[2]), 2));
+			if (distEucl < distMin) {
+				distMin = distEucl;
+				colorId = i;
+			}
+		}
+		return colorId;
 	}
 
 	
