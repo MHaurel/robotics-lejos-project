@@ -17,6 +17,8 @@ public class Pilot { // MAYBE extends MovePilot
 	private MovePilot movePilot;
 	private HashMap colorsCalibrated;
 	private EV3ColorSensor cs;
+	
+	// bandes noires = 1,5 et chaque case = 12
 
 	public Pilot(String name, EV3ColorSensor cs) {
 		this.name = name;
