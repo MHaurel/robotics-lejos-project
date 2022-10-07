@@ -5,11 +5,12 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 
 public class Test {
 	
-	enum Color {
-		RED, BLUE, GREEN, BLACK, ORANGE, WHITE
+	static enum Color {
+		RED, GREEN, BLUE, ORANGE, WHITE, BLACK
 	};
 
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
@@ -17,31 +18,27 @@ public class Test {
 		// Initialisation array representing a map
 		Map map = new Map();
 		
-		// Serializing it
-		Color c = Color.BLACK;
-		System.out.println(c);
+		int[][] colorsCalibrated = {
+				{255, 0, 0},
+				{255, 0, 0},
+				{255, 0, 0},
+				{255, 0, 0},
+				{255, 0, 0},
+				{255, 0, 255},
+		};
 		
-		for (int i = 0; i < 7; i++) {
-			for (int j = 0; j < 5; j++) {
-				map.map[i][j] = Color.RED;
-			}
+		// HashMap linking Colors to int array
+		HashMap<Color, int[]> colors = new HashMap<>(); 
+		colors.put(Color.RED, colorsCalibrated[0]);
+		colors.put(Color.GREEN, colorsCalibrated[1]);
+		colors.put(Color.BLUE, colorsCalibrated[2]);
+		colors.put(Color.ORANGE, colorsCalibrated[3]);
+		colors.put(Color.WHITE, colorsCalibrated[4]);
+		colors.put(Color.BLACK, colorsCalibrated[5]);
+		
+		for (Color i : colors.keySet()) {
+			  System.out.println(i + ": " + colors.get(i)[0] + ", " + colors.get(i)[1] + ", " + colors.get(i)[2]);
 		}
-		
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss");  
-		LocalDateTime now = LocalDateTime.now();  
-		
-		String filename = "calibrated_colors-" + dtf.format(now).toString().split(" ")[0] + "_" + dtf.format(now).toString().split(" ")[1] + ".txt";
-		
-		System.out.println(filename);
-		
-		PrintWriter writer = new PrintWriter("calibrated_colors", "UTF-8");
-
-		// Write RGB codes here
-		writer.println("69 6 3"); // R G B
-		writer.println("18 38 7");
-		
-		writer.close();
-		
 	}
 	
 }
