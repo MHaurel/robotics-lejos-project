@@ -5,17 +5,23 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 
 import lejos.hardware.Button;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.robotics.SampleProvider;
 import lejos.robotics.subsumption.Behavior;
+import project.Test.Color;
 
 public class GetColor implements Behavior {
 	
 	// RED, GREEN, BLUE, ORANGE, WHITE, BLACK
 
 	// bandes noires = 1,5 et chaque case = 12
+	
+	enum Color {
+		RED, GREEN, BLUE, ORANGE, WHITE, BLACK
+	};
 	
 	EV3ColorSensor cs;
 	int[][] colorCalibrated = new int[6][3];
@@ -54,7 +60,7 @@ public class GetColor implements Behavior {
 			for (int j = 0; j < 3;j++) {
 				System.out.print(this.colorCalibrated[i][j] + " ");
 			}
-			int i = this.colorCalibrated.length;
+			i = this.colorCalibrated.length;
 			System.out.println();
 		}
 		
@@ -99,12 +105,26 @@ public class GetColor implements Behavior {
 		return colors;
 	}
 	
-	private int closestColor(int[][] colorCalibrated, int[] colorActual) {
+//	private int closestColor(int[][] colorCalibrated, int[] colorActual) {
+//		double distEucl;
+//		double distMin = 999;
+//		int colorId = 0;
+//		for (int i = 0; i < colorCalibrated.length; i++) {
+//			distEucl = Math.sqrt(Math.pow((colorCalibrated[i][0] - colorActual[0]), 2) + Math.pow((colorCalibrated[i][1] - colorActual[1]), 2) + Math.pow((colorCalibrated[i][2] - colorActual[2]), 2));
+//			if (distEucl < distMin) {
+//				distMin = distEucl;
+//				colorId = i;
+//			}
+//		}
+//		return colorId;
+//	}
+
+	private int closestColor(HashMap<Color, int[]> colorCalibrated, int[] colorActual) {
 		double distEucl;
 		double distMin = 999;
 		int colorId = 0;
-		for (int i = 0; i < colorCalibrated.length; i++) {
-			distEucl = Math.sqrt(Math.pow((colorCalibrated[i][0] - colorActual[0]), 2) + Math.pow((colorCalibrated[i][1] - colorActual[1]), 2) + Math.pow((colorCalibrated[i][2] - colorActual[2]), 2));
+		for (int i = 0; i < colorCalibrated.size(); i++) {
+			distEucl = getEuclidieanDistance(colorCalibrated.get(Color.RED), colorActual);
 			if (distEucl < distMin) {
 				distMin = distEucl;
 				colorId = i;
@@ -112,7 +132,11 @@ public class GetColor implements Behavior {
 		}
 		return colorId;
 	}
-
 	
+	private double getEuclidieanDistance(int[] color1, int[] color2) {
+		return Math.sqrt(Math.pow((color1[0] - color2[0]), 2) + 
+						 Math.pow((color1[1] - color2[1]), 2) + 
+						 Math.pow((color1[2] - color2[2]), 2));
+	}
 	
 }
