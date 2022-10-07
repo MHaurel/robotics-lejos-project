@@ -40,8 +40,8 @@ public class GetColor implements Behavior {
 	public void action() {
 		// TODO Auto-generated method stub
 		System.out.println("press DOWN");
-		int colorCalibrated = 0;
-		while (colorCalibrated < 6) {
+		int numColor = 0;
+		while (numColor < 6) {
 			// Demande la couleur a afficher
 			// Récupère code RGB de la couleur lorsque l'on appuie sur un bouton
 			Button.DOWN.waitForPressAndRelease();
@@ -49,19 +49,12 @@ public class GetColor implements Behavior {
 			while (!Button.DOWN.isDown()) {
 				int[] colors = this.getColor();
 				System.out.println("RGB = " + " " + colors[0] + " " + colors[1] + " " + colors[2]);
-				this.colorCalibrated[colorCalibrated] = colors;
+				this.colorCalibrated[numColor] = colors;
 			}
 
-			System.out.println("Just Calibrated color " + colorCalibrated);
+			System.out.println("Just Calibrated color " + numColor);
 			
-			colorCalibrated++;
-		}
-		for(int i = 0; i < 6;i++) {
-			for (int j = 0; j < 3;j++) {
-				System.out.print(this.colorCalibrated[i][j] + " ");
-			}
-			i = this.colorCalibrated.length;
-			System.out.println();
+			numColor++;
 		}
 		
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss");  
