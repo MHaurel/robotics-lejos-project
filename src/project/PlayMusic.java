@@ -5,6 +5,9 @@ import lejos.hardware.Sound;
 public class PlayMusic {
 	
 	public static void playMusic(int colorId) throws InterruptedException {
+		
+		Sound.setVolume(50);
+		
 		switch (colorId) {
 		case 0:
 			Sound.playTone(440, 100);

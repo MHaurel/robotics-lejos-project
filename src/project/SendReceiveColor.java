@@ -12,7 +12,7 @@ import lejos.remote.nxt.BTConnection;
 import lejos.remote.nxt.BTConnector;
 import lejos.remote.nxt.NXTConnection;
 
-public class SendColor {
+public class SendReceiveColor {
 	
 	public int randomColorId() {
 		Random r = new Random();
@@ -33,6 +33,8 @@ public class SendColor {
 			System.out.println("\n\nEnvoi");
 			
 			dos.write(valeur);
+			PlayMusic.playMusic(valeur);
+			
 			dos.flush();
 			System.out.println("\nEnvoyé");
 			System.out.println("You send value: " + valeur);
@@ -61,6 +63,7 @@ public class SendColor {
 				dis.close();
 				btc.close();
 				System.out.println(valeur);
+				PlayMusic.playMusic(valeur);
 				Button.RIGHT.waitForPressAndRelease();
 				LCD.clear();
 				return Color.values()[valeur];
