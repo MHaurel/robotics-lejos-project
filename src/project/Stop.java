@@ -9,10 +9,10 @@ import lejos.robotics.subsumption.Behavior;
 public class Stop implements Behavior {
 	
 	private Arbitrator a;
-	private MovePilot pilot;
+	private Pilot pilot;
 	private EV3ColorSensor cs;
 	
-	public Stop(MovePilot pilot, EV3ColorSensor cs) {
+	public Stop(Pilot pilot, EV3ColorSensor cs) {
 		this.pilot = pilot;
 		this.cs = cs;
 	}
@@ -29,7 +29,7 @@ public class Stop implements Behavior {
 		/*
 		 * Stop motors
 		 */
-		this.pilot.stop();
+		this.pilot.getMovePilot().stop();
 		// Close color sensor
 		this.cs.close();
 		this.a.stop();

@@ -63,5 +63,15 @@ public class Pilot { // MAYBE extends MovePilot
 	public HashMap<Color, int[]> getColorsCalibrated() {
 		return this.colorsCalibrated;
 	}
+	
+	public void setMovePilot(MovePilot mp) {
+		this.movePilot = mp;
+	}
+	
+	public MovePilot getMovePilot() {
+		return this.movePilot;
+	}
+	
+	
 
 }

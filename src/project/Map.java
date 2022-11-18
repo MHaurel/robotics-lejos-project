@@ -1,14 +1,9 @@
 package project;
 
-import java.io.Serializable;
 
-import project.Test.Color;
+import project.Color;
 
-public class Map implements Serializable {
-	
-	enum Color {
-		RED, GREEN, BLUE, ORANGE, WHITE, BLACK
-	}
+public class Map {
 	
 	Color[][] map = {
 			{Color.BLUE, Color.BLUE,   Color.BLUE,   Color.BLUE,   Color.BLUE},
