@@ -21,7 +21,6 @@ public class Main {
 		/*
 		 * Instantating behaviors
 		 */
-		
 		ColorManagement cm = new ColorManagement(cs, pilot);
 		cm.init();
 		

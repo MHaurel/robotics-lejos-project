@@ -32,13 +32,12 @@ public class ForwardRandomDirection implements Behavior {
 		System.out.println("Press RIGHT button to go in a random direction");
 		Button.RIGHT.waitForPressAndRelease();
 		r = new Random();
-		Direction direction = Direction.values()[r.nextInt(Direction.values().length - 2)];
-		r = new Random();
-		int nbrCases = r.nextInt(3) + 1;
+		Direction direction = Direction.values()[r.nextInt(Direction.values().length)];
+		int nbrCases = r.nextInt(1) + 1;
 		System.out.println("Direction : " + direction);
 		System.out.println("nbrCases : " + nbrCases);
 
-		this.pilot.travelAppropriateDirectionDistance(direction, nbrCases);
+		this.pilot.travelDirectionDistance(direction, nbrCases);
 		
 	}
 
