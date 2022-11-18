@@ -41,43 +41,32 @@ public class Pilot {
 		return new MovePilot(chassis);
 	}
 	
-	private void travelUp() {
-		// Distance = bandwidth + case width
+	private void linearTravel(int nbrCases) {
+		// Distance = bandWidth + caseWidth
 		float distance = this.bandWidth + this.caseWidth;
-		this.movePilot.travel(distance);
+		this.movePilot.travel(distance * nbrCases);
 	}
 	
-	private void travelDown() {
-		// Distance = bandwith + case width
-		float distance = this.bandWidth + this.caseWidth;
-//		while()
-		this.movePilot.travel(-distance);
-	}
-	
-	private void travelRight() {
-		
-	}
-	
-	private void travelLeft() {
-		
-	}
-	
-	public void travelAppropriateDirection(Direction direction) {
+	public void travelAppropriateDirectionDistance(Direction direction, int nbrCases) {
 		switch (direction) {
 		case UP:
-			this.travelUp();
+			this.linearTravel(nbrCases);
 			break;
 			
 		case DOWN:
-			this.travelDown();
+			this.linearTravel(-nbrCases);
 			break;
 			
 		case RIGHT:
-			this.travelRight();
+			this.movePilot.rotateRight();
+			this.linearTravel(nbrCases);
+			this.movePilot.rotateLeft();
 			break;
 			
 		case LEFT:
-			this.travelLeft();
+			this.movePilot.rotateLeft();
+			this.linearTravel(nbrCases);
+			this.movePilot.rotateRight();
 			break;
 		}
 	}

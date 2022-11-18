@@ -33,16 +33,12 @@ public class ForwardRandomDirection implements Behavior {
 		Button.RIGHT.waitForPressAndRelease();
 		r = new Random();
 		Direction direction = Direction.values()[r.nextInt(Direction.values().length - 2)];
-		System.out.println(direction);
-		// Call the approrpriate method of pilot
-		this.pilot.travelAppropriateDirection(direction);
-		
-//		this.pilot.getMovePilot().forward();
-//		
-//		while (pilot.getMovePilot().isMoving()) {
-//			this.currentColor = cm.closestColor();
-//		}
-		
+		r = new Random();
+		int nbrCases = r.nextInt(3) + 1;
+		System.out.println("Direction : " + direction);
+		System.out.println("nbrCases : " + nbrCases);
+
+		this.pilot.travelAppropriateDirectionDistance(direction, nbrCases);
 		
 	}
 
