@@ -7,6 +7,8 @@ public class ForwardCheckColor implements Behavior {
 	private Pilot pilot;
 	private ColorManagement cm;
 	
+	Color currentColor = null;
+	
 	public ForwardCheckColor(Pilot pilot, ColorManagement cm) {
 		this.pilot = pilot;
 		this.cm = cm;
@@ -21,8 +23,11 @@ public class ForwardCheckColor implements Behavior {
 	@Override
 	public void action() {
 		// TODO Auto-generated method stub
-		System.out.println(this.cm.closestColor());
 		this.pilot.getMovePilot().forward();
+		
+		while (pilot.getMovePilot().isMoving()) {
+			this.currentColor = cm.closestColor();
+		}
 	}
 
 	@Override

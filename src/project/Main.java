@@ -21,10 +21,12 @@ public class Main {
 		/*
 		 * Instantating behaviors
 		 */
+		
 		ColorManagement cm = new ColorManagement(cs, pilot);
 		cm.init();
 		
-		Behavior b1 = new ForwardCheckColor(pilot, cm);
+//		Behavior b1 = new ForwardCheckColor(pilot, cm);
+		Behavior b1 = new ForwardRandomDirection(pilot, cm);
 		
 		Stop bStop = new Stop(pilot, cs);
 		

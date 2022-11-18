@@ -48,7 +48,7 @@ public class ColorManagement {
 		return colors;
 	}
 
-	public int closestColor() {
+	public Color closestColor() {
 		int[] colorActual = this.getColor();
 		double distEucl;
 		double distMin = 999;
@@ -60,7 +60,7 @@ public class ColorManagement {
 				colorId = i;
 			}
 		}
-		return colorId;
+		return Color.values()[colorId];
 	}
 
 	private double getEuclideanDistance(int[] color1, int[] color2) {

@@ -16,19 +16,22 @@ public class Pilot {
 	private Map map;
 	private MovePilot movePilot;
 	
-	private float bandWidth = 1.5f;
-	private int caseWidth = 12;
+	private float bandWidth = 15f; // 1.5 cm
+	private int caseWidth = 120; // 12 cm
+	private float distanceBetweenSensorWheel = 75f; // 7.5cm
 
+	private int moveSpeed = 75;
+	
 	public Pilot(String name, EV3ColorSensor cs) {
 		this.name = name;
 
 		this.map = new Map();
 
 		this.movePilot = initPilot();
-		this.movePilot.setLinearSpeed(100);
+		this.movePilot.setLinearSpeed(this.moveSpeed);
 		this.movePilot.setAngularSpeed(100);
-		this.movePilot.setLinearAcceleration(2000);
-		this.movePilot.setAngularAcceleration(2000);
+		this.movePilot.setLinearAcceleration(100);
+		this.movePilot.setAngularAcceleration(100);
 	}
 
 	static MovePilot initPilot() {
@@ -36,6 +39,47 @@ public class Pilot {
 		Wheel wheel2 = WheeledChassis.modelWheel(Motor.C, 56.).offset(60);
 		Chassis chassis = new WheeledChassis(new Wheel[] { wheel1, wheel2 }, WheeledChassis.TYPE_DIFFERENTIAL);
 		return new MovePilot(chassis);
+	}
+	
+	private void travelUp() {
+		// Distance = bandwidth + case width
+		float distance = this.bandWidth + this.caseWidth;
+		this.movePilot.travel(distance);
+	}
+	
+	private void travelDown() {
+		// Distance = bandwith + case width
+		float distance = this.bandWidth + this.caseWidth;
+//		while()
+		this.movePilot.travel(-distance);
+	}
+	
+	private void travelRight() {
+		
+	}
+	
+	private void travelLeft() {
+		
+	}
+	
+	public void travelAppropriateDirection(Direction direction) {
+		switch (direction) {
+		case UP:
+			this.travelUp();
+			break;
+			
+		case DOWN:
+			this.travelDown();
+			break;
+			
+		case RIGHT:
+			this.travelRight();
+			break;
+			
+		case LEFT:
+			this.travelLeft();
+			break;
+		}
 	}
 
 	/*
