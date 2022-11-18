@@ -13,23 +13,26 @@ public class ColorManagement {
 	public ColorManagement(EV3ColorSensor cs, Pilot pilot) {
 		this.cs = cs;
 		this.pilot = pilot;
+		this.colorCalibrated = new HashMap<Color, int[]>();
 	}
 
 	public void init() {
 		// TODO Auto-generated method stub
 		for (Color color : Color.values()) {
-			System.out.println("press DOWN");
-			System.out.println("Color to calibrate : " + color);
+//			System.out.println("Press DOWN to continue");
+			System.out.println("Color to calibrate : (press DOWN)" + color);
 			// Demande la couleur a afficher
 			// Récupère code RGB de la couleur lorsque l'on appuie sur un bouton
 			Button.DOWN.waitForPressAndRelease();
-			int[] colors = null;
+//			int[] colors = null;
+			int[] colors = {1, 2, 3};
 			
+			System.out.println("Press DOWN to confirm calibration");
 			while (!Button.DOWN.isDown()) {
 				colors = this.getColor();
 				System.out.println("RGB = " + " " + colors[0] + " " + colors[1] + " " + colors[2]);
 //				this.colorCalibrated[numColor] = colors;
-				pilot.setCalibratedColor(color, colors);
+//				pilot.setCalibratedColor(color, colors);
 			}
 			
 			this.colorCalibrated.put(color, colors);
