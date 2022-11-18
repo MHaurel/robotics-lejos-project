@@ -9,16 +9,15 @@ import lejos.robotics.chassis.Wheel;
 import lejos.robotics.chassis.WheeledChassis;
 import lejos.robotics.navigation.MovePilot;
 
-public class Pilot { // MAYBE extends MovePilot
+public class Pilot {
 
 	private String name = "Robot";
 
 	private Map map;
 	private MovePilot movePilot;
-	private HashMap colorsCalibrated;
-	private EV3ColorSensor cs;
 	
-	// bandes noires = 1,5 et chaque case = 12
+	private float bandWidth = 1.5f;
+	private int caseWidth = 12;
 
 	public Pilot(String name, EV3ColorSensor cs) {
 		this.name = name;
@@ -30,11 +29,6 @@ public class Pilot { // MAYBE extends MovePilot
 		this.movePilot.setAngularSpeed(100);
 		this.movePilot.setLinearAcceleration(2000);
 		this.movePilot.setAngularAcceleration(2000);
-
-		this.colorsCalibrated = new HashMap<Color, int[]>();
-
-		this.cs = cs;
-		// Maybe EV3TouchSensor
 	}
 
 	static MovePilot initPilot() {
@@ -55,13 +49,21 @@ public class Pilot { // MAYBE extends MovePilot
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public void setCalibratedColor(Color key, int[] value) {
-		this.colorsCalibrated.put(key, value);
+	
+	public float getBandWidth() {
+		return this.bandWidth;
 	}
-
-	public HashMap<Color, int[]> getColorsCalibrated() {
-		return this.colorsCalibrated;
+	
+	public void setBandWidth(float bw) {
+		this.bandWidth = bw;
+	}
+	
+	public int getCaseWidth() {
+		return this.caseWidth;
+	}
+	
+	public void setCaseWidth(int cw) {
+		this.caseWidth = cw;
 	}
 	
 	public void setMovePilot(MovePilot mp) {
@@ -71,7 +73,5 @@ public class Pilot { // MAYBE extends MovePilot
 	public MovePilot getMovePilot() {
 		return this.movePilot;
 	}
-	
-	
 
 }

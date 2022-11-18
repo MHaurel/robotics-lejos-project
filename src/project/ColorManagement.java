@@ -19,53 +19,21 @@ public class ColorManagement {
 	public void init() {
 		// TODO Auto-generated method stub
 		for (Color color : Color.values()) {
-//			System.out.println("Press DOWN to continue");
-			System.out.println("Color to calibrate : (press DOWN)" + color);
-			// Demande la couleur a afficher
-			// Récupère code RGB de la couleur lorsque l'on appuie sur un bouton
+			System.out.println("Press DOWN to begin the calibration of the color: " + color + ". And RIGHT to confirm.");
 			Button.DOWN.waitForPressAndRelease();
-//			int[] colors = null;
-			int[] colors = {1, 2, 3};
 			
-			System.out.println("Press DOWN to confirm calibration");
-			while (!Button.DOWN.isDown()) {
+			int[] colors = null;
+			
+			System.out.println("Press RIGHT to confirm calibration");
+			
+			while (!Button.RIGHT.isDown()) {
 				colors = this.getColor();
 				System.out.println("RGB = " + " " + colors[0] + " " + colors[1] + " " + colors[2]);
-//				this.colorCalibrated[numColor] = colors;
 //				pilot.setCalibratedColor(color, colors);
 			}
 			
 			this.colorCalibrated.put(color, colors);
-
-//			System.out.println("Just Calibrated color " + numColor);
-
-//			numColor++;
 		}
-
-//		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss");
-//		LocalDateTime now = LocalDateTime.now();
-//
-//		String filename = "calibrated_colors-" + dtf.format(now).toString().split(" ")[0] + "_"
-//				+ dtf.format(now).toString().split(" ")[1] + ".txt";
-//
-//		System.out.println(filename);
-//
-//		PrintWriter writer = null;
-//		try {
-//			writer = new PrintWriter("calibrated_colors", "UTF-8");
-//		} catch (FileNotFoundException | UnsupportedEncodingException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//		// Write RGB codes here
-//		String[] colors = { "RED", "GREEN", "BLUE", "ORANGE", "WHITE", "BLACK" };
-//		for (int i = 0; i < 6; i++) {
-//			writer.println(colors[i] + " : " + this.colorCalibrated[i][0] + " " + 
-//						   this.colorCalibrated[i][1] + " " + this.colorCalibrated[i][2]);
-//		}
-//
-//		writer.close();
 		
 	}
 
@@ -86,7 +54,7 @@ public class ColorManagement {
 		double distMin = 999;
 		int colorId = 0;
 		for (int i = 0; i < this.colorCalibrated.size(); i++) {
-			distEucl = getEuclideanDistance(this.colorCalibrated.get(Color.RED), colorActual);
+			distEucl = getEuclideanDistance(this.colorCalibrated.get(Color.values()[i]), colorActual);
 			if (distEucl < distMin) {
 				distMin = distEucl;
 				colorId = i;

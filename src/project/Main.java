@@ -10,22 +10,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		String name = "Arya";
-		
-//		Wheel wheel1 = WheeledChassis.modelWheel(Motor.B, 56.).offset(-60);
-//		Wheel wheel2 = WheeledChassis.modelWheel(Motor.C, 56.).offset(60);
-//		
-//		Chassis chassis = new WheeledChassis(new Wheel[] {wheel1, wheel2}, WheeledChassis.TYPE_DIFFERENTIAL);
-		
-		
-		
-		/*
-		 * Set speed & acceleration of the pilot
-		 */
-//		pilot.setLinearSpeed(100);
-//		pilot.setAngularSpeed(100);
-//		pilot.setLinearAcceleration(2000);
-//		pilot.setAngularAcceleration(2000);
+		String name = "Arya"; // Depends on the robot
+		System.out.println("Hello ! I'm " + name);
 		
 		EV3ColorSensor cs = new EV3ColorSensor(SensorPort.S3);
 
@@ -35,7 +21,6 @@ public class Main {
 		/*
 		 * Instantating behaviors
 		 */
-		
 		ColorManagement cm = new ColorManagement(cs, pilot);
 		cm.init();
 		
@@ -49,10 +34,9 @@ public class Main {
 		
 		bStop.setArbi(arbi);
 		
-		// Printing message when ready
-		System.out.println("I'm ready ! Let's go DOWN");
+		// Display message when ready
+		System.out.println("I'm ready ! Press DOWN to go on");
 		Button.DOWN.waitForPressAndRelease();
-		System.out.println("Checkpoint press RIGHT");
 
 		arbi.go();
 		

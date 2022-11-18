@@ -31,6 +31,4 @@ public class ForwardCheckColor implements Behavior {
 		this.pilot.getMovePilot().stop();
 	}
 
-	
-	
 }
