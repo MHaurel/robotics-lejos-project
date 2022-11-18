@@ -1,49 +1,38 @@
 package project;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
-
 import lejos.hardware.Button;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.robotics.SampleProvider;
-import lejos.robotics.navigation.MovePilot;
-import lejos.robotics.subsumption.Behavior;
 
-public class GetColor implements Behavior {
+public class ColorManagement {
 
 	EV3ColorSensor cs;
 	Pilot pilot;
+	HashMap<Color, int[]> colorCalibrated;
 
-	public GetColor(EV3ColorSensor cs, Pilot pilot) {
+	public ColorManagement(EV3ColorSensor cs, Pilot pilot) {
 		this.cs = cs;
 		this.pilot = pilot;
 	}
 
-	@Override
-	public boolean takeControl() {
+	public void init() {
 		// TODO Auto-generated method stub
-		return Button.RIGHT.isDown();
-	}
-
-	@Override
-	public void action() {
-		// TODO Auto-generated method stub
-		System.out.println("press DOWN");
-//		int numColor = 0;
 		for (Color color : Color.values()) {
+			System.out.println("press DOWN");
+			System.out.println("Color to calibrate : " + color);
 			// Demande la couleur a afficher
 			// Récupère code RGB de la couleur lorsque l'on appuie sur un bouton
 			Button.DOWN.waitForPressAndRelease();
-
+			int[] colors = null;
+			
 			while (!Button.DOWN.isDown()) {
-				int[] colors = this.getColor();
+				colors = this.getColor();
 				System.out.println("RGB = " + " " + colors[0] + " " + colors[1] + " " + colors[2]);
 //				this.colorCalibrated[numColor] = colors;
 				pilot.setCalibratedColor(color, colors);
 			}
+			
+			this.colorCalibrated.put(color, colors);
 
 //			System.out.println("Just Calibrated color " + numColor);
 
@@ -77,12 +66,6 @@ public class GetColor implements Behavior {
 		
 	}
 
-	@Override
-	public void suppress() {
-		// TODO Auto-generated method stub
-
-	}
-
 	private int[] getColor() {
 		SampleProvider sp = this.cs.getRGBMode();
 		float[] sample = new float[3];
@@ -94,12 +77,13 @@ public class GetColor implements Behavior {
 		return colors;
 	}
 
-	private int closestColor(HashMap<Color, int[]> colorCalibrated, int[] colorActual) {
+	public int closestColor() {
+		int[] colorActual = this.getColor();
 		double distEucl;
 		double distMin = 999;
 		int colorId = 0;
-		for (int i = 0; i < colorCalibrated.size(); i++) {
-			distEucl = getEuclideanDistance(colorCalibrated.get(Color.RED), colorActual);
+		for (int i = 0; i < this.colorCalibrated.size(); i++) {
+			distEucl = getEuclideanDistance(this.colorCalibrated.get(Color.RED), colorActual);
 			if (distEucl < distMin) {
 				distMin = distEucl;
 				colorId = i;

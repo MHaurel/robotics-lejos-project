@@ -1,39 +1,34 @@
 package project;
 
-import lejos.hardware.Button;
-import lejos.hardware.sensor.EV3ColorSensor;
-import lejos.robotics.Color;
-import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 
 public class ForwardCheckColor implements Behavior {
 	
-	private MovePilot pilot;
-	private EV3ColorSensor cs;
+	private Pilot pilot;
+	private ColorManagement cm;
 	
-	private Color currentColor;
-	
-	public ForwardCheckColor(MovePilot pilot, EV3ColorSensor cs) {
+	public ForwardCheckColor(Pilot pilot, ColorManagement cm) {
 		this.pilot = pilot;
-		this.cs = cs;
+		this.cm = cm;
 	}
 
 	@Override
 	public boolean takeControl() {
 		// TODO Auto-generated method stub
-		return Button.DOWN.isDown(); // temporary
+		return true;
 	}
 
 	@Override
 	public void action() {
 		// TODO Auto-generated method stub
-		this.pilot.forward();
+		System.out.println(this.cm.closestColor());
+		this.pilot.getMovePilot().forward();
 	}
 
 	@Override
 	public void suppress() {
 		// TODO Auto-generated method stub
-		this.pilot.stop();
+		this.pilot.getMovePilot().stop();
 	}
 
 	

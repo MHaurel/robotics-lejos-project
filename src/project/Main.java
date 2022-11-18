@@ -1,14 +1,8 @@
 package project;
 
 import lejos.hardware.Button;
-import lejos.hardware.lcd.LCD;
-import lejos.hardware.motor.Motor;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3ColorSensor;
-import lejos.robotics.chassis.Chassis;
-import lejos.robotics.chassis.Wheel;
-import lejos.robotics.chassis.WheeledChassis;
-import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 
@@ -42,8 +36,10 @@ public class Main {
 		 * Instantating behaviors
 		 */
 		
-		//Behavior b1 = new ForwardCheckColor(pilot, cs);
-		Behavior b1 = new GetColor(cs, pilot);
+		ColorManagement cm = new ColorManagement(cs, pilot);
+		cm.init();
+		
+		Behavior b1 = new ForwardCheckColor(pilot, cm);
 		
 		Stop bStop = new Stop(pilot, cs);
 		
