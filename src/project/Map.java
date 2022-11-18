@@ -22,43 +22,17 @@ public class Map {
 	}
 	
 	public Color[][] getReversedMap() {
-		Color[][] reversedMap = new Color[map.length][map[0].length];
+		int line = this.map.length;
+		int column = this.map[0].length;
+		Color[][] reversedMap = new Color[line][column];
 		
-		int cpt_i = 0;
-		for (int i = map.length - 1; i >= 0; i--) {
-			Color[] temp = new Color[map[0].length]; // Temporary row
-			int cpt_j = 0;
-			for (int j = map[0].length - 1; j >= 0; j--) {
-				temp[cpt_j] = map[i][j];
+		for (int i = 0; i < line; i++) {
+			for (int j = 0; j < column; j++) {
+				reversedMap[i][j] = this.map[line - i - 1][column - j - 1];
 			}
-			reversedMap[cpt_i] = temp;
 		}
 		
 		return reversedMap;
-	}
-	
-	public static void main(String[] args) {
-		Map map = new Map();
-		
-		for (int i = 0; i <= map.getMap().length - 1; i++) {
-			for (int j = 0; j <= map.getMap()[0].length - 1; j++) {
-				System.out.print(map.getMap()[i][j]);
-				System.out.print(" ");
-			}
-			System.out.println();
-		}
-		
-		System.out.println("");
-		System.out.println("===================");
-		System.out.println("");
-		
-		Color[][] reversedMap = map.getReversedMap();
-		
-		for (int i = 0; i <= reversedMap.length - 1; i++) {
-			for (int j = 0; j <= reversedMap[0].length - 1; j++) {
-				System.out.println(reversedMap[i][j]);
-			}
-		}
 	}
 	
 }

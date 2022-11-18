@@ -11,7 +11,7 @@ public class Pilot {
 
 	private String name = "Robot";
 
-	private Map map;
+	private Color[][] map;
 	private MovePilot movePilot;
 	
 	private int x, y;
@@ -24,15 +24,17 @@ public class Pilot {
 	
 	public Pilot(String name, EV3ColorSensor cs) {
 		this.name = name;
+		
+		Map m = new Map();
 
 		if (name == "Jon" ) {
-			this.map = new Map();
-			x = 0;
-			y = 6;
+			this.map = m.getMap();
+			this.x = 0;
+			this.y = 6;
 		} else {
-			this.map = new Map();
-			x = 0;
-			y = 5;
+			this.map = m.getReversedMap();
+			this.x = 0;
+			this.y = 5;
 		}
 
 		this.movePilot = initPilot();
@@ -105,12 +107,33 @@ public class Pilot {
 		this.caseWidth = cw;
 	}
 	
+	public MovePilot getMovePilot() {
+		return this.movePilot;
+	}
+	
 	public void setMovePilot(MovePilot mp) {
 		this.movePilot = mp;
 	}
 	
-	public MovePilot getMovePilot() {
-		return this.movePilot;
+	public int getX() {
+		return this.x;
+	}
+	
+	public void setX(int x) {
+		this.x = x;
+	}
+	
+	public int getY() {
+		return this.y;
+	}
+	
+	public void setY(int y) {
+		this.y = y;
+	}
+	
+	public void setXY(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 
 }
