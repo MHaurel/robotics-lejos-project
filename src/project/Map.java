@@ -1,8 +1,6 @@
 package project;
 
 
-import project.Color;
-
 public class Map {
 	
 	Color[][] map = {

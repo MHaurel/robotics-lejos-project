@@ -51,6 +51,26 @@ public class Pilot {
 		return new MovePilot(chassis);
 	}
 	
+	//using the coordinates of the robot and a color, determines the coordinates of the closest case of this color and travel to it using travelCase(x, y) TODO
+	public void travelClosestColor(Color color) {
+		
+	}
+	
+	public void travelCase(int x, int y) {
+		int travelX = x - this.x;
+		int travelY = y - this.y;
+		
+		if (travelX != 0) {
+			Direction dirX = travelX > 0 ? Direction.RIGHT : Direction.LEFT;
+			travelDirectionDistance(dirX, Math.abs(travelX));
+		}
+		
+		if (travelY != 0) {
+			Direction dirY = travelY > 0 ? Direction.UP : Direction.DOWN;
+			travelDirectionDistance(dirY, Math.abs(travelY));
+		}
+	}
+	
 	public void travelDirectionDistance(Direction direction, int nbrCases) {
 		
 		float distance = this.bandWidth + this.caseWidth;
