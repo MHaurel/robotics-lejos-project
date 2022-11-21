@@ -16,7 +16,7 @@ public class SendReceiveColor {
 	
 	public int randomColorId() {
 		Random r = new Random();
-		return r.nextInt(5);
+		return r.nextInt(Color.values().length - 1);
 	}
 	
 	public void sendColorId(int valeur) {

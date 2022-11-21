@@ -51,12 +51,36 @@ public class Pilot {
 		return new MovePilot(chassis);
 	}
 	
-	//using the coordinates of the robot and a color, determines the coordinates of the closest case of this color and travel to it using travelCase(x, y) TODO
-	public void travelClosestColor(Color color) {
+	//using the coordinates of the robot and a color, determines the coordinates of the closest case of this color and travel to it using travelCase(x, y)
+	public void travelColor(Color color) {
+		int yCase = 0;
+		int xCase = 0;
+		int distanceCase = Integer.MAX_VALUE;
+		int distanceActu = 0;
 		
+		for (int i = this.map.length - 1; i <= 0; i--) { //allows to prefer the left and down direction to avoid robots collision
+			for (int j = 0; j < this.map[i].length; j++) {
+				if (this.map[i][j] == color) {
+					
+					distanceActu = Math.abs(i - this.y) + Math.abs(j - this.x); //Manhattan distance
+					if (distanceActu < distanceCase) {
+						distanceCase = distanceActu;
+						yCase = i;
+						xCase = j;
+					}
+					
+				}
+			}
+		}
+		
+		//DEBUG
+		System.out.println("yCase : " + yCase);
+		System.out.println("xCase : " + xCase);
+		
+		travelCase(xCase, yCase);
 	}
-	
-	public void travelCase(int x, int y) {
+
+	private void travelCase(int x, int y) {
 		int travelX = x - this.x;
 		int travelY = y - this.y;
 		
@@ -71,7 +95,7 @@ public class Pilot {
 		}
 	}
 	
-	public void travelDirectionDistance(Direction direction, int nbrCases) {
+	private void travelDirectionDistance(Direction direction, int nbrCases) {
 		
 		float distance = this.bandWidth + this.caseWidth;
 		
@@ -85,15 +109,15 @@ public class Pilot {
 			break;
 			
 		case RIGHT:
-			this.movePilot.rotate(86, false); // right
+			this.movePilot.rotate(86, false); // turn right
 			this.movePilot.travel(distance * nbrCases, false);
-			this.movePilot.rotate(-86, false); // left
+			this.movePilot.rotate(-86, false); // turn left
 			break;
 			
 		case LEFT:
-			this.movePilot.rotate(-86, false); // left
+			this.movePilot.rotate(-86, false); // turn left
 			this.movePilot.travel(distance * nbrCases, false);
-			this.movePilot.rotate(86, false); // right
+			this.movePilot.rotate(86, false); // turn right
 			break;
 			
 		}
