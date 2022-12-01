@@ -33,4 +33,15 @@ public class Map {
 		return reversedMap;
 	}
 	
+	public String toString() {
+		String result = "";
+		for (int i = 0; i < this.map.length; i++) {
+			for (int j = 0; j < this.map[i].length; j++) {
+				result += this.map[i][j] + " ";
+			}
+			result += System.lineSeparator();
+		}
+		return result;
+	}
+	
 }

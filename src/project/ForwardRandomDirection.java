@@ -17,7 +17,7 @@ public class ForwardRandomDirection implements Behavior {
 		this.pilot = pilot;
 		this.cm = cm;
 	}
-
+	
 	@Override
 	public boolean takeControl() {
 		// TODO Auto-generated method stub
@@ -29,15 +29,14 @@ public class ForwardRandomDirection implements Behavior {
 		// TODO Auto-generated method stub
 		
 		// Choose the direction among Direction
-		System.out.println("Press RIGHT button to go in a random direction");
+		System.out.println("Press RIGHT button to go to a random Color");
 		Button.RIGHT.waitForPressAndRelease();
 		r = new Random();
-		Direction direction = Direction.values()[r.nextInt(Direction.values().length)];
-		int nbrCases = r.nextInt(1) + 1;
-		System.out.println("Direction : " + direction);
-		System.out.println("nbrCases : " + nbrCases);
-
-		this.pilot.travelDirectionDistance(direction, nbrCases);
+		Color randomColor = Color.values()[r.nextInt(Color.values().length - 1)];
+				
+		System.out.println("Random color : " + randomColor);
+		
+		this.pilot.travelColor(randomColor);
 		
 	}
 

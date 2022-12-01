@@ -58,7 +58,7 @@ public class Pilot {
 		int distanceCase = Integer.MAX_VALUE;
 		int distanceActu = 0;
 		
-		for (int i = this.map.length - 1; i <= 0; i--) { //allows to prefer the left and down direction to avoid robots collision
+		for (int i = this.map.length - 1; i >= 0; i--) { //allows to prefer the left and down direction to avoid robots collision
 			for (int j = 0; j < this.map[i].length; j++) {
 				if (this.map[i][j] == color) {
 					
@@ -72,10 +72,6 @@ public class Pilot {
 				}
 			}
 		}
-		
-		//DEBUG
-		System.out.println("yCase : " + yCase);
-		System.out.println("xCase : " + xCase);
 		
 		travelCase(xCase, yCase);
 	}
