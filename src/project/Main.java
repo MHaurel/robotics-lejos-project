@@ -18,9 +18,7 @@ public class Main {
 		// Using the newly defined class as the pilot (contain a move pilot)
 		Pilot pilot = new Pilot(name, cs);
 		
-		/*
-		 * Instantating behaviors
-		 */
+		// Instantiating behaviors
 		ColorManagement cm = new ColorManagement(cs, pilot);
 		cm.init();
 		

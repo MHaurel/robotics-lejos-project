@@ -36,8 +36,8 @@ public class SendReceiveColor {
 			PlayMusic.playMusic(valeur);
 			
 			dos.flush();
-			System.out.println("\nEnvoyé");
-			System.out.println("You send value: " + valeur);
+			System.out.println("Color: " + Color.values()[valeur]);
+			System.out.println("Press RIGHT");
 			Button.RIGHT.waitForPressAndRelease();
 			dos.close();
 			btc.close();
@@ -62,13 +62,15 @@ public class SendReceiveColor {
 	
 				dis.close();
 				btc.close();
-				System.out.println(valeur);
 				PlayMusic.playMusic(valeur);
+				System.out.println("Color : " + Color.values()[valeur]);
+				System.out.println("Press RIGHT");
 				Button.RIGHT.waitForPressAndRelease();
 				LCD.clear();
 				return Color.values()[valeur];
 				} else {
 					System.out.println("Pas de connexion");
+					System.out.println("Press RIGHT");
 					Button.RIGHT.waitForPressAndRelease();
 					return null;
 				}
