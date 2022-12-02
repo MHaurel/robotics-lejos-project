@@ -28,5 +28,9 @@ public class Send implements Behavior {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void setPilot(Pilot pilot) {
+		this.pilot = pilot;
+	}
 
 }
