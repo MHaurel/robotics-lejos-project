@@ -14,14 +14,12 @@ import lejos.remote.nxt.NXTConnection;
 
 public class SendReceiveColor {
 	
-	public int randomColorId() {
-		Random r = new Random();
-		return r.nextInt(Color.values().length - 1);
-	}
-	
-	public void sendColorId(int valeur) {
+	public void sendRandomColorId() {
 		
 		Button.RIGHT.waitForPressAndRelease();
+		
+		Random r = new Random();
+		int valeur =  r.nextInt(Color.values().length - 1);
 		
 		try {
 			

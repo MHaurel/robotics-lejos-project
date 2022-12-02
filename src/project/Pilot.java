@@ -74,13 +74,16 @@ public class Pilot {
 				}
 			}
 		}
-		
+		System.out.println("xCase: " + xCase);
+		System.out.println("yCase: " + yCase);
 		travelCase(xCase, yCase);
 	}
 
 	private void travelCase(int x, int y) {
 		int travelX = x - this.x;
 		int travelY = y - this.y;
+		System.out.println("travelX: " + travelX);
+		System.out.println("travelY: " + travelY);
 		
 		if (travelX != 0) {
 			Direction dirX = travelX > 0 ? Direction.RIGHT : Direction.LEFT;
@@ -88,9 +91,12 @@ public class Pilot {
 		}
 		
 		if (travelY != 0) {
-			Direction dirY = travelY > 0 ? Direction.UP : Direction.DOWN;
+			Direction dirY = travelY > 0 ? Direction.DOWN : Direction.UP;
 			travelDirectionDistance(dirY, Math.abs(travelY));
 		}
+		
+		this.x = x;
+		this.y = y;
 	}
 	
 	private void travelDirectionDistance(Direction direction, int nbrCases) {

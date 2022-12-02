@@ -8,14 +8,12 @@ import lejos.robotics.subsumption.Behavior;
 public class ForwardRandomDirection implements Behavior {
 	
 	private Pilot pilot;
-	private ColorManagement cm;
 	Random r;
 	
 	Color currentColor = null;
 	
-	public ForwardRandomDirection(Pilot pilot, ColorManagement cm) {
+	public ForwardRandomDirection(Pilot pilot) {
 		this.pilot = pilot;
-		this.cm = cm;
 	}
 	
 	@Override
