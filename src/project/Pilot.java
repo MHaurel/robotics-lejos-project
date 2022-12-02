@@ -118,15 +118,15 @@ public class Pilot {
 			break;
 			
 		case RIGHT:
-			this.movePilot.rotate(86, false); // turn right
+			this.movePilot.rotate(85, false); // turn right
 			this.movePilot.travel(distance * nbrCases, false);
-			this.movePilot.rotate(-86, false); // turn left
+			this.movePilot.rotate(-85, false); // turn left
 			break;
 			
 		case LEFT:
-			this.movePilot.rotate(-86, false); // turn left
+			this.movePilot.rotate(-85, false); // turn left
 			this.movePilot.travel(distance * nbrCases, false);
-			this.movePilot.rotate(86, false); // turn right
+			this.movePilot.rotate(85, false); // turn right
 			break;
 			
 		}
