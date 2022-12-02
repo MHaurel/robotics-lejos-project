@@ -31,7 +31,7 @@ public class Run {
 		
 		Stop bStop = new Stop(pilot, cs);
 		
-		Behavior[] tab = new Behavior[] {bSend, bReceive, b1, bStop};
+		Behavior[] tab = new Behavior[] {bSend, bReceive, bStop};
 		
 		Arbitrator arbi = new Arbitrator(tab);
 		

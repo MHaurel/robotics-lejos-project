@@ -22,6 +22,7 @@ public class Send implements Behavior {
 	@Override
 	public boolean takeControl() {
 		// TODO Auto-generated method stub
+		System.out.println("I'm the receiver !");
 		return this.pilot.getStatus() == Status.SENDER;
 	}
 
