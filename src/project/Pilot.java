@@ -22,6 +22,8 @@ public class Pilot {
 	private int moveSpeed = 100;
 	private int rotationSpeed = 50;
 	
+	private Status status;
+	
 	public Pilot(String name, EV3ColorSensor cs) {
 		this.name = name;
 		
@@ -174,6 +176,14 @@ public class Pilot {
 	public void setXY(int x, int y) {
 		this.x = x;
 		this.y = y;
+	}
+	
+	public Status getStatus() {
+		return this.status;
+	}
+	
+	public void setStatus(Status s) {
+		this.status = s;
 	}
 
 }
