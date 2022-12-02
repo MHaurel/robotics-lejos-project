@@ -39,9 +39,9 @@ public class Main {
 //
 //		arbi.go();
 		
-		Run.main("Jon", "00:16:53:43:B3:FB", "00:16:53:43:9E:2F", Status.RECEIVER);
+//		Run.main("Jon", "00:16:53:43:B3:FB", "00:16:53:43:9E:2F", Status.RECEIVER);
 		
-//		Run.main("Daenerys", "00:16:53:43:9E:2F", "00:16:53:43:B3:FB", Status.SENDER);
+		Run.main("Daenerys", "00:16:53:43:9E:2F", "00:16:53:43:B3:FB", Status.SENDER);
 		
 	}
 	

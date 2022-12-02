@@ -23,11 +23,15 @@ public class Run {
 		cm.init();
 		
 //		Behavior b1 = new ForwardCheckColor(pilot, cm);
+		
+		Behavior bSend = new Send(pilot);
+		Behavior bReceive = new Receive(pilot);
+			
 		Behavior b1 = new ForwardRandomDirection(pilot);
 		
 		Stop bStop = new Stop(pilot, cs);
 		
-		Behavior[] tab = new Behavior[] {b1, bStop};
+		Behavior[] tab = new Behavior[] {bSend, bReceive, b1, bStop};
 		
 		Arbitrator arbi = new Arbitrator(tab);
 		

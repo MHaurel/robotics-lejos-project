@@ -15,6 +15,10 @@ public class Send implements Behavior {
 
 	private Pilot pilot;
 	
+	public Send(Pilot pilot) {
+		this.pilot = pilot;
+	}
+	
 	@Override
 	public boolean takeControl() {
 		// TODO Auto-generated method stub
