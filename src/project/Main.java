@@ -16,14 +16,14 @@ public class Main {
 		EV3ColorSensor cs = new EV3ColorSensor(SensorPort.S3);
 
 		// Using the newly defined class as the pilot (contain a move pilot)
-		Pilot pilot = new Pilot(name, cs);
+		Pilot pilot = new Pilot("Jon", cs);
 		
 		// Instantiating behaviors
 		ColorManagement cm = new ColorManagement(cs, pilot);
 		cm.init();
 		
 //		Behavior b1 = new ForwardCheckColor(pilot, cm);
-		Behavior b1 = new ForwardRandomDirection(pilot, cm);
+		Behavior b1 = new ForwardRandomDirection(pilot);
 		
 		Stop bStop = new Stop(pilot, cs);
 		
