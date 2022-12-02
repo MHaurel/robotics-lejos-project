@@ -10,6 +10,8 @@ import lejos.robotics.navigation.MovePilot;
 public class Pilot {
 
 	private String name = "Robot";
+	private String macAddress;
+	private String targetMacAddress;
 
 	private Color[][] map;
 	private MovePilot movePilot;
@@ -24,8 +26,11 @@ public class Pilot {
 	
 	private Status status;
 	
-	public Pilot(String name, EV3ColorSensor cs) {
+	public Pilot(String name, EV3ColorSensor cs, String macAddress, String targetMacAddress, Status status) {
 		this.name = name;
+		this.macAddress = macAddress;
+		this.targetMacAddress = targetMacAddress;
+		this.status = status;
 		
 		Map m = new Map();
 
@@ -137,6 +142,14 @@ public class Pilot {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getMacAddress() {
+		return this.macAddress;
+	}
+	
+	public String getTargetMacAddress() {
+		return this.targetMacAddress;
 	}
 	
 	public float getBandWidth() {
