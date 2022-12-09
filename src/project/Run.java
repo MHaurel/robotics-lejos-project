@@ -10,8 +10,7 @@ public class Run {
 
 	public static void main(String botName, String macAddress, String targetMacAddress, Status status) {
 		
-		String name = "Arya"; // Depends on the robot
-		System.out.println("Hello ! I'm " + name);
+		System.out.println("Hello ! I'm " + botName);
 		
 		EV3ColorSensor cs = new EV3ColorSensor(SensorPort.S3);
 
