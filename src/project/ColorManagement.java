@@ -29,7 +29,6 @@ public class ColorManagement {
 			while (!Button.RIGHT.isDown()) {
 				colors = this.getColor();
 				System.out.println("RGB = " + " " + colors[0] + " " + colors[1] + " " + colors[2]);
-//				pilot.setCalibratedColor(color, colors);
 			}
 			
 			this.colorCalibrated.put(color, colors);

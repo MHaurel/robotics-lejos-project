@@ -1,6 +1,5 @@
 package project;
 
-
 public class Map {
 	
 	Color[][] map = {

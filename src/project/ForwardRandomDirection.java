@@ -35,7 +35,6 @@ public class ForwardRandomDirection implements Behavior {
 		System.out.println("Random color : " + randomColor);
 		
 		this.pilot.travelColor(randomColor);
-		
 	}
 
 	@Override

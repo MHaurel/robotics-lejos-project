@@ -15,9 +15,6 @@ public class Recepteur {
 		String waiting = "Waiting";
 		
 		try {
-			//LCD.drawString(waiting, 0, 0);
-			//LCD.refresh();
-
 			BTConnector bt = new BTConnector();
 			NXTConnection btc = bt.waitForConnection(100000, NXTConnection.PACKET);
 
@@ -27,15 +24,12 @@ public class Recepteur {
 			LCD.refresh();
 
 			InputStream is = btc.openInputStream();
-			//OutputStream os = btc.openOutputStream();
 			DataInputStream dis = new DataInputStream(is);
-			//DataOutputStream dos = new DataOutputStream(os);
 
 			int valeur = dis.read();
 			
 
 			dis.close();
-			//dos.close();
 			btc.close();
 			System.out.println(valeur);
 			Button.RIGHT.waitForPressAndRelease();

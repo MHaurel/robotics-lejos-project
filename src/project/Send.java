@@ -39,7 +39,7 @@ public class Send implements Behavior {
 	@Override
 	public void suppress() {
 		// TODO Auto-generated method stub
-		
+		this.pilot.getMovePilot().stop();
 	}
 	
 	private void sendRandomColorId() {

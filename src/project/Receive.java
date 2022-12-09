@@ -39,7 +39,7 @@ public class Receive implements Behavior {
 	@Override
 	public void suppress() {
 		// TODO Auto-generated method stub
-		
+		this.pilot.getMovePilot().stop();
 	}
 	
 	private Color receiveColor() {
