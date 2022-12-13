@@ -84,6 +84,7 @@ public class Pilot {
 		travelCase(xCase, yCase);
 	}
 
+	// Calculate the horizontal and vertical directions to go to the coordinates in parameters
 	private void travelCase(int x, int y) {
 		int travelX = x - this.x;
 		int travelY = y - this.y;
@@ -100,6 +101,7 @@ public class Pilot {
 			travelDirectionDistance(dirY, Math.abs(travelY));
 		}
 		
+		// Updates the robot's coordinates
 		this.x = x;
 		this.y = y;
 	}
